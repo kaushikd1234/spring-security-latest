@@ -57,8 +57,8 @@ public class ProductsController {
     public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         String username = authRequest.getUsername();
         String password = authRequest.getPassword();
-        Authentication authentication = authenticationManager.authenticate
-                (new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(username);
